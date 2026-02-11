@@ -9,6 +9,7 @@ export default defineConfig([
     outDir: "build",
     external: ["electron"],
     format: ["cjs"],
+    target: "node20",
     dts: false,
   },
   {
@@ -18,6 +19,7 @@ export default defineConfig([
     outDir: "build",
     external: ["electron"],
     format: ["cjs"],
+    target: "node20",
     dts: false,
   },
 ]);

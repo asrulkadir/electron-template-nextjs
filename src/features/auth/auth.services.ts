@@ -48,7 +48,7 @@ function useAuthMutations() {
         return httpRequest.post<TServiceAuth.TResponseLogin>(
           "/login",
           { email: payload.email, password: payload.password },
-          { headers: { "x-api-key": "reqres-free-v1" } },
+          { headers: { "x-api-key": process.env.NEXT_PUBLIC_API_KEY } },
         )
       },
       onSuccess: (response, payload, context) => {

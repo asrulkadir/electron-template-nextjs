@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "main": "build/main.cjs",
-  "author": "Synapsis",
+  "homepage": "https://github.com/asrulkadir/electron-template-nextjs",
+  "author": {
+    "name": "Asrul Kadir",
+    "email": "asrulkadir.asus4@gmail.com"
+  },
   "description": "Electron app with Next.js SSR support",
   "scripts": {
     "next:dev": "next dev",
@@ -20,9 +24,12 @@
     "electron:dist:mac": "electron-builder --mac",
     "electron:dist:win": "electron-builder --win",
     "electron:dist:linux": "electron-builder --linux deb",
+    "flatten-symlinks": "node scripts/flatten-symlinks.mjs",
     "dev": "npm-run-all --parallel electron:dev next:dev",
     "build": "run-s next:build electron:build",
-    "dist": "run-s next:build electron:build electron:dist"
+    "build:win": "run-s next:build electron:build",
+    "dist": "run-s next:build electron:build electron:dist",
+    "dist:win": "run-s next:build electron:build electron:dist:win"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.3.0",
@@ -33,7 +40,7 @@
     "axios": "^1.13.2",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.19",
-    "get-port-please": "^3.1.2",
+    "get-port-please": "^3.2.0",
     "immer": "^11.1.0",
     "lucide-react": "^0.562.0",
     "next": "15.5.7",
@@ -60,6 +67,8 @@
     "typescript": "^5"
   },
   "msw": {
-    "workerDirectory": ["public"]
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

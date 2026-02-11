@@ -2,6 +2,12 @@ import path from "node:path"
 import { app, BrowserWindow } from "electron"
 import { getPort } from "get-port-please"
 
+// Log Node.js and Electron versions
+console.log('Electron version:', process.versions.electron)
+console.log('Node.js version:', process.versions.node)
+console.log('Chrome version:', process.versions.chrome)
+console.log('V8 version:', process.versions.v8)
+
 const isDev = !app.isPackaged
 const DEV_SERVER_URL = "http://localhost:3000"
 
@@ -32,10 +38,17 @@ async function startNextJsServer(): Promise<number> {
   process.chdir(nextPath)
 
   try {
+    // Log paths for debugging
+    console.log("Next.js path:", nextPath)
+    console.log("Server path:", serverPath)
+    console.log("Server exists:", require("node:fs").existsSync(serverPath))
+    
     // Require the standalone server.js - this starts the server asynchronously
     require(serverPath)
-  } catch (err) {
-    console.error("Error requiring server.js:", err)
+  } catch (err: unknown) {
+    const error = err as Error
+    console.error("Error requiring server.js:", error.message)
+    console.error("Stack trace:", error.stack)
     process.chdir(originalCwd)
     throw err
   }

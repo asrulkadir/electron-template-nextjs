@@ -2,10 +2,23 @@
   "$schema": "https://www.schemastore.org/electron-builder.json",
   "asar": true,
   "appId": "electron-nextjs",
-  "productName": "Electron NextJS",
+  "productName": "electron-app-nextjs",
   "asarUnpack": ["**/*.node"],
   "win": {
-    "target": ["dir", "portable", "zip"],
+    "target": [
+      {
+        "target": "dir",
+        "arch": ["x64"]
+      },
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      },
+      {
+        "target": "zip",
+        "arch": ["x64"]
+      }
+    ],
     "icon": "public/icons/icon.png"
   },
   "linux": {
